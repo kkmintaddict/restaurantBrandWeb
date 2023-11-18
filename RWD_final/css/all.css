@@ -24,6 +24,7 @@ body{
 .navSec{         
     background: rgba(0,0,0,0.7);   /*固定導覽背景色自適應*/
     backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     position: fixed;
     top:0;
     left: 0;
@@ -152,8 +153,11 @@ footer p, footer .contactUs li, a{
     display: inline-flex;
     justify-content: flex-end; 
 }
-.snsbox h1{   /*頁尾logo*/
+.snsbox h2{   /*頁尾logo*/
     font-size: 50px;
+    text-indent: 101%;   /* 文字縮排，利用百分比值讓文字超過容器寬度，使其隱藏在容器外。 */
+    overflow: hidden;    /* 超出部分隱藏，容器尺寸外的文字將被隱藏。 */
+    white-space: nowrap; /* 禁用自動換行，文字將在同一行内顯示，不會自動換行。 */
     background: url(../image/logo_b.svg) no-repeat right center/contain;
 }
 .sns{
@@ -937,6 +941,56 @@ main.login ,main.register{
 
 /* 平板跟手機中間防破版斷點 */
 @media only screen and (max-width: 620px) { /* 620 以下執行 */ /* 點餐頁 單欄式 斷點 */
+
+    .showmenu{
+        display: block;
+        position: absolute;   /*漢堡icon*/
+        top:12px;
+        right: 16px;
+        z-index: 20;
+        color: #fff;
+        font-size: 20px;
+    }
+    .navbar{
+        padding: 12px;  
+        display: block;
+    }
+    .menu {
+        display: block;
+        padding-top: 10px;
+        /*隱藏選單開始*/
+        max-height: 0px;
+        overflow: hidden;
+        /*隱藏選單結束*/
+        top: 75px;
+        left: 0;
+        right: 0;
+        transition: max-height 0.8s;
+    }
+    .menu li a{
+        color: #fff; 
+        border-bottom: transparent;
+        font-weight: 300; 
+        display: block;
+        padding: 12px;
+        text-align: center;
+        transition: all 0.3s; 
+    }
+    a.showmenu{
+        padding: 10px;    /*擴大漢堡範圍*/
+    }
+    .menu.menu-show{
+        max-height: 220px
+    }
+    .menu li a:hover, .menu li a:focus, .menu li a.active{ /*清掉橘色線條*/
+        border-bottom: transparent;
+        color: #fff;
+    }
+    h1{
+        font-size: 24px;   /* logo 變小*/
+        margin-left: 10px;
+        background: url(../image/logo_w.svg) no-repeat bottom center/contain; 
+    }
     .order_container{    /*內部寬度620*/
         max-width: 620px;
         margin: 0 0px 30px;
@@ -999,55 +1053,6 @@ main.login ,main.register{
    
     /*手機版本 共同佈局*/
 
-    .showmenu{
-        display: block;
-        position: absolute;   /*漢堡icon*/
-        top:12px;
-        right: 16px;
-        z-index: 20;
-        color: #fff;
-        font-size: 20px;
-    }
-    .navbar{
-        padding: 12px;  
-        display: block;
-    }
-    .menu {
-        display: block;
-        padding-top: 10px;
-        /*隱藏選單開始*/
-        max-height: 0px;
-        overflow: hidden;
-        /*隱藏選單結束*/
-        top: 75px;
-        left: 0;
-        right: 0;
-        transition: max-height 0.8s;
-    }
-    .menu li a{
-        color: #fff !important; /*強制覆蓋 註冊頁面特殊設定*/
-        border-bottom: transparent !important; /*強制覆蓋 註冊頁面特殊設定*/
-        font-weight: 300!important;  /*強制覆蓋 js設定*/
-        display: block;
-        padding: 12px;
-        text-align: center;
-        transition: all 0.3s; 
-    }
-    a.showmenu{
-        padding: 10px;    /*擴大漢堡範圍*/
-    }
-    .menu.menu-show{
-        max-height: 220px
-    }
-    .menu li a:hover, .menu li a:focus, .menu li a.active{ /*清掉橘色線條*/
-        border-bottom: transparent;
-        color: #fff;
-    }
-    h1{
-        font-size: 24px;   /*手機版本 logo 變小*/
-        margin-left: 10px;
-        background: url(../image/logo_w.svg) no-repeat bottom center/contain; 
-    }
     h2{
         font-size: 30px;
         font-weight: 300;

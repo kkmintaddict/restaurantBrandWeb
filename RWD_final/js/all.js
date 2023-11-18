@@ -12,6 +12,11 @@ $(document).ready(function() {
             $(this).addClass("active");    
         }
     });
+    // 如果 currentURL 是 "register.html"
+    if (currentURL.indexOf("register.html") !== -1) {
+        // 選取 "登入" 連結並加入 "active" 樣式
+        $(".menu a[href='login.html']").addClass("active");
+    }
 
 
 
